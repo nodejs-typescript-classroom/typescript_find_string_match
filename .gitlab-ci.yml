@@ -1,0 +1,8 @@
+stages:
+  - test
+build and test:
+  image: node:16.12.0
+  stage: test
+  script:
+   - yarn install
+   - yarn test
