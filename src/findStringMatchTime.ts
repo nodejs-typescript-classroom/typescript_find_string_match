@@ -4,6 +4,7 @@ export const findStringMatchTime = (input: string, match: string): number => {
   const inputFreq: Map<string, number> = new Map<string, number>();
   const inputLen: number = input.length;
   const matchLen: number = match.length;
+  // collect character frequency in match string
   for (let pos = 0; pos < matchLen; pos++ ) {
     let ch: string = match[pos];
     let current: number = 0;
@@ -12,6 +13,7 @@ export const findStringMatchTime = (input: string, match: string): number => {
     }
     matchFreq.set(ch, current+1);
   }
+  // collect character frequency of input string that exists in match string
   for (let pos = 0; pos < inputLen; pos++ ) {
     let ch: string = input[pos];
     if (matchFreq.has(ch)) {
@@ -22,6 +24,7 @@ export const findStringMatchTime = (input: string, match: string): number => {
       inputFreq.set(ch, current+1);
     }
   }
+  // find all match number for use input string character to form match string
   let stillMatch: boolean = true;
   while (stillMatch) {
     for (const [key, value] of matchFreq) {
